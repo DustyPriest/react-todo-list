@@ -15,7 +15,7 @@ const Header = ({ title, onAddTask, showAdd }) => {
 };
 
 Header.defaultProps = {
-  title: 'Daily Planner',
+  title: 'Tasks for Today',
 };
 
 Header.propTypes = {

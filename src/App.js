@@ -67,7 +67,7 @@ const App = () => {
   return (
     <div>
       <PageHeader toggleMode={changeMode} modeState={toggleMode} />
-      <Draggable handle='#handle'>
+      <Draggable handle='#handle' bounds={{ top: -15 }}>
         <div className='container'>
           <hr className='rounded' id='handle'></hr>
           <Header
