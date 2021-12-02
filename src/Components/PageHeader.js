@@ -17,7 +17,7 @@ const PageHeader = ({ toggleMode, modeState }) => {
           className='icon'
           onClick={toggleMode}
           style={{
-            fontSize: '20',
+            fontSize: '1.5em',
             display: 'inline',
             position: 'relative',
             right: '10px',
