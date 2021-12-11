@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "http://DustyPriest.github.io/react-todo-list",
   "dependencies": {
+    "@react-hook/mouse-position": "^4.1.3",
     "@testing-library/jest-dom": "^5.15.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",

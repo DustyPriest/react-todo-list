@@ -1,9 +1,9 @@
 import { useState } from 'react';
 
-const AddTask = ({ onAdd }) => {
+const AddTask = ({ listId, onAdd, toggleShowAddTask }) => {
   const [text, setText] = useState('');
   const [day, setDay] = useState('');
-  const [reminder, setReminder] = useState(false);
+  const [check, setCheck] = useState(false);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -13,11 +13,12 @@ const AddTask = ({ onAdd }) => {
       return;
     }
 
-    onAdd({ text, day, reminder });
+    onAdd(listId, { text, day, check });
 
     setText('');
     setDay('');
-    setReminder(false);
+    setCheck(false);
+    toggleShowAddTask();
   };
 
   return (
@@ -44,10 +45,10 @@ const AddTask = ({ onAdd }) => {
         <label>Task</label>
         <input
           type='checkbox'
-          checked={reminder}
-          value={reminder}
+          checked={check}
+          value={check}
           cursor='pointer'
-          onChange={(e) => setReminder(e.currentTarget.checked)}
+          onChange={(e) => setCheck(e.currentTarget.checked)}
         />
       </div>
       <input type='submit' value='Save Task' className='btn btn-block' />

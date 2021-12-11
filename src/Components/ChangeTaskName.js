@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import { FaCheckSquare } from 'react-icons/fa';
 import { useState } from 'react';
 
-const ChangeTaskName = ({ title, onChange, onEditTaskName }) => {
+const ChangeTaskName = ({ title, listId, onChange, onEditTaskName }) => {
   const [newTitle, setNewTitle] = useState(title);
 
   const submitTitle = (e) => {
     e.preventDefault();
 
-    onChange(newTitle);
+    onChange(listId, newTitle);
     onEditTaskName();
 
     setNewTitle('');
@@ -21,6 +21,8 @@ const ChangeTaskName = ({ title, onChange, onEditTaskName }) => {
         type='text'
         value={newTitle}
         onChange={(e) => setNewTitle(e.target.value)}
+        autoFocus
+        onBlur={submitTitle}
       />
 
       <button type='submit' className='icon-button'>

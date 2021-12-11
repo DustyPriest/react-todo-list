@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const PageHeader = ({ toggleMode, modeState }) => {
   return (
     <div className='page-header'>
-      <div style={{ padding: '10px' }}>
+      <div style={{ position: 'absolute', left: '10px' }}>
         {new Date().toLocaleDateString('en-au', {
           weekday: 'long',
           year: 'numeric',
@@ -12,14 +12,17 @@ const PageHeader = ({ toggleMode, modeState }) => {
           day: 'numeric',
         })}
       </div>
+      <button className='btn btn-scale' style={{ positon: 'absolute' }}>
+        {' '}
+        New List{' '}
+      </button>
       {!modeState ? (
         <FaSun
           className='icon'
           onClick={toggleMode}
           style={{
             fontSize: '1.5em',
-            display: 'inline',
-            position: 'relative',
+            position: 'absolute',
             right: '10px',
           }}
         />
@@ -29,8 +32,7 @@ const PageHeader = ({ toggleMode, modeState }) => {
           onClick={toggleMode}
           style={{
             fontSize: '20',
-            display: 'inline',
-            position: 'relative',
+            position: 'absolute',
             right: '10px',
           }}
         />

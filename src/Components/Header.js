@@ -5,6 +5,7 @@ import ChangeTaskName from './ChangeTaskName';
 
 const Header = ({
   title,
+  listId,
   onAddTask,
   showAdd,
   editTaskName,
@@ -17,6 +18,7 @@ const Header = ({
         {editTaskName ? (
           <ChangeTaskName
             title={title}
+            listId={listId}
             onChange={changeTaskName}
             onEditTaskName={onEditTaskName}
           />
