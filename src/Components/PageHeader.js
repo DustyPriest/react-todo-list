@@ -1,7 +1,7 @@
 import { FaMoon, FaSun } from 'react-icons/fa';
 import PropTypes from 'prop-types';
 
-const PageHeader = ({ toggleMode, modeState }) => {
+const PageHeader = ({ onToggleMode, modeState, onNewList }) => {
   return (
     <div className='page-header'>
       <div style={{ position: 'absolute', left: '10px' }}>
@@ -12,14 +12,17 @@ const PageHeader = ({ toggleMode, modeState }) => {
           day: 'numeric',
         })}
       </div>
-      <button className='btn btn-scale' style={{ positon: 'absolute' }}>
-        {' '}
-        New List{' '}
+      <button
+        className='btn btn-scale'
+        style={{ positon: 'absolute' }}
+        onClick={() => onNewList()}
+      >
+        New List
       </button>
       {!modeState ? (
         <FaSun
           className='icon'
-          onClick={toggleMode}
+          onClick={onToggleMode}
           style={{
             fontSize: '1.5em',
             position: 'absolute',
@@ -29,7 +32,7 @@ const PageHeader = ({ toggleMode, modeState }) => {
       ) : (
         <FaMoon
           className='icon'
-          onClick={toggleMode}
+          onClick={onToggleMode}
           style={{
             fontSize: '20',
             position: 'absolute',
@@ -42,7 +45,7 @@ const PageHeader = ({ toggleMode, modeState }) => {
 };
 
 PageHeader.propTypes = {
-  toggleMode: PropTypes.func,
+  onToggleMode: PropTypes.func,
   modeState: PropTypes.bool,
 };
 

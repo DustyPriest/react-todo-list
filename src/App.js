@@ -4,10 +4,11 @@ import TaskLists from './Components/TaskLists';
 
 const App = () => {
   const [mode, setMode] = useState(false);
+  // const [listCount, setListCount] = useState(2);
   const [taskLists, setTaskLists] = useState([
     {
       id: 0,
-      pos: { x: 0, y: 0 },
+      pos: { x: 64, y: 64 },
       title: 'Tasks for Today',
       tasks: [
         {
@@ -32,7 +33,7 @@ const App = () => {
     },
     {
       id: 1,
-      pos: { x: 458, y: 24 },
+      pos: { x: 696, y: 96 },
       title: 'Tasks for Today2',
       tasks: [
         {
@@ -56,6 +57,47 @@ const App = () => {
       ],
     },
   ]);
+
+  // create new Task List
+  const newTaskList = () => {
+    const currIds = taskLists.map((tlist) => {
+      return tlist.id;
+    });
+    const id = Math.max(...currIds) + 1;
+
+    const newTaskList = {
+      id: id,
+      // default task list appearance
+      pos: { x: 0, y: 0 },
+      title: 'New List',
+      tasks: [
+        {
+          id: 0,
+          text: 'Make a Todo List!',
+          day: new Date().toLocaleDateString('en-au', {
+            weekday: 'short',
+            // year: 'numeric',
+            day: 'numeric',
+            month: 'short',
+          }),
+          check: false,
+        },
+      ],
+    };
+    setTaskLists([...taskLists, newTaskList]);
+  };
+
+  // delete Task List
+  const deleteTaskList = (id) => {
+    setTaskLists(taskLists.filter((tlist) => tlist.id !== id));
+  };
+
+  // set Task List z-index on interact
+  const promoteZIndex = (id) => {
+    const activeList = taskLists.filter((tlist) => tlist.id === id)[0];
+    const trimList = taskLists.filter((tlist) => tlist.id !== id);
+    setTaskLists([...trimList, activeList]);
+  };
 
   // set Task List position
   const setPos = (id, nX, nY) => {
@@ -102,7 +144,7 @@ const App = () => {
     );
   };
 
-  // toggle task check
+  // toggle task check / complete
   const setToggleCheck = (listId, taskId) => {
     setTaskLists(
       taskLists.map((tlist) =>
@@ -132,7 +174,11 @@ const App = () => {
 
   return (
     <div>
-      <PageHeader toggleMode={changeMode} modeState={mode} />
+      <PageHeader
+        onToggleMode={changeMode}
+        modeState={mode}
+        onNewList={newTaskList}
+      />
       <div className='drag-container'>
         <TaskLists
           modeState={mode}
@@ -142,6 +188,8 @@ const App = () => {
           toggleCheck={setToggleCheck}
           deleteTask={deleteTask}
           addTask={addTask}
+          deleteTaskList={deleteTaskList}
+          promoteZIndex={promoteZIndex}
         />
       </div>
     </div>

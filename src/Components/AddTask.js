@@ -41,13 +41,12 @@ const AddTask = ({ listId, onAdd, toggleShowAddTask }) => {
           onChange={(e) => setDay(e.target.value)}
         />
       </div>
-      <div className='form-control form-control-check'>
-        <label>Task</label>
+      <div className='form-control check'>
+        <label>Completed</label>
         <input
           type='checkbox'
           checked={check}
           value={check}
-          cursor='pointer'
           onChange={(e) => setCheck(e.currentTarget.checked)}
         />
       </div>

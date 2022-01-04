@@ -8,7 +8,12 @@ const TaskLists = ({
   toggleCheck,
   deleteTask,
   addTask,
+  deleteTaskList,
+  promoteZIndex,
 }) => {
+  const findTaskListIndex = (taskList) => {
+    return taskLists.findIndex((tlist) => tlist.id === taskList.id);
+  };
   return (
     <>
       {taskLists.map((taskList) => (
@@ -24,6 +29,9 @@ const TaskLists = ({
           toggleCheck={toggleCheck}
           deleteTask={deleteTask}
           addTask={addTask}
+          deleteTaskList={deleteTaskList}
+          index={findTaskListIndex(taskList)}
+          promoteZIndex={promoteZIndex}
         >
           {' '}
         </TaskList>

@@ -32,11 +32,12 @@ const Header = ({
             onClick={onEditTaskName}
             className='icon'
             fontSize='0.5em'
-            style={{ marginLeft: '10px' }}
+            style={{ marginLeft: '10px', marginRight: '10px' }}
           />
         )}
       </h1>
       <Button
+        className='btn btn-scale'
         onClick={onAddTask}
         color='black'
         text={showAdd ? 'Close' : 'Add Task'}
